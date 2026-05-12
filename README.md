@@ -1,36 +1,38 @@
 # Liam Git Workflow
 
-Personal Codex plugin for Liam's Git workflow.
+面向 Codex 的个人 Git 工作流插件。
 
-## Goal
+## 目标
 
-Provide one consistent Codex entrypoint for Liam's Git rules and common actions:
+把 Liam 的 Git 规则和常用操作收敛到一个统一入口里，避免平时还要靠零散的记忆、全局说明文件或临时 prompt 才能完成日常 Git 工作。
 
-- choose the right branch type
-- create a branch from the right base
-- draft Chinese Conventional Commits
-- sync a work branch with `dev` or `main`
-- finish work and prepare the next Git step
-- handle production hotfix flow
-- prepare release flow
-- audit local Git config against policy
+当前覆盖的能力包括：
 
-## Codex Usage
+- 选择合适的分支类型
+- 从正确的基线创建分支
+- 生成中文 Conventional Commit
+- 将工作分支同步到 `dev` 或 `main`
+- 完成分支收尾并准备下一步 Git 动作
+- 处理线上 hotfix 流程
+- 准备 release 流程
+- 按策略审计本机 Git 配置
 
-Primary entry:
+## 在 Codex 中使用
+
+主入口：
 
 ```text
 $liam-git-workflow
-创建一个线上bug修复的分支，修复login出现的网络问题
+创建一个线上 bug 修复分支，修复 login 出现的网络问题
 ```
 
-Help:
+帮助入口：
 
 ```text
 $liam-git-workflow-help
 ```
 
-Direct entries:
+精确入口：
 
 ```text
 $liam-git-workflow-create-branch
@@ -42,21 +44,21 @@ $liam-git-workflow-release
 $liam-git-workflow-sync-policy
 ```
 
-## Command Model
+## 使用约定
 
-- In Codex, prefer `$liam-git-workflow`
-- Do not rely on `$Liam Git Workflow`
-- The plugin name follows lower-case hyphen-case for trigger stability
+- 在 Codex 中优先使用 `$liam-git-workflow`
+- 不依赖 `$Liam Git Workflow`
+- 插件名统一使用小写加连字符，保证触发稳定
 
-## Rule Sources
+## 规则来源
 
-- [policy.md](D:/liam/project/others/20260511_liam_git_workflow/references/policy.md): canonical workflow policy
-- [branch-matrix.md](D:/liam/project/others/20260511_liam_git_workflow/references/branch-matrix.md): branch decision rules
-- [commit-rules.md](D:/liam/project/others/20260511_liam_git_workflow/references/commit-rules.md): commit conventions
-- [pr-rules.md](D:/liam/project/others/20260511_liam_git_workflow/references/pr-rules.md): PR and merge expectations
-- [scenarios.md](D:/liam/project/others/20260511_liam_git_workflow/references/scenarios.md): common examples
+- [policy.md](D:/liam/project/others/20260511_liam_git_workflow/references/policy.md): 核心工作流策略
+- [branch-matrix.md](D:/liam/project/others/20260511_liam_git_workflow/references/branch-matrix.md): 分支决策规则
+- [commit-rules.md](D:/liam/project/others/20260511_liam_git_workflow/references/commit-rules.md): 提交规范
+- [pr-rules.md](D:/liam/project/others/20260511_liam_git_workflow/references/pr-rules.md): PR 与合并规则
+- [scenarios.md](D:/liam/project/others/20260511_liam_git_workflow/references/scenarios.md): 常见场景示例
 
-## Repository Layout
+## 仓库结构
 
 ```text
 .codex-plugin/
@@ -66,26 +68,28 @@ references/
 scripts/
 ```
 
-## Install Notes
+## 安装说明
 
-This repository is designed to be used as a local Codex plugin repository. The plugin manifest is at:
+这个仓库被设计成一个本地 Codex 插件仓库。
+
+插件清单位于：
 
 - [plugin.json](D:/liam/project/others/20260511_liam_git_workflow/.codex-plugin/plugin.json)
 
-The local marketplace entry is at:
+本地 marketplace 入口位于：
 
 - [marketplace.json](D:/liam/project/others/20260511_liam_git_workflow/.agents/plugins/marketplace.json)
 
-## Global Skill Sync
+## 同步到全局技能库
 
-To expose these skills through the Codex global skill library while keeping this repository as the single source of truth, run:
+如果你希望在 Codex 全局技能库中直接使用这组技能，同时继续把当前仓库作为唯一维护源，可以运行：
 
 ```powershell
 powershell -ExecutionPolicy Bypass -File .\scripts\link_codex_global_skills.ps1
 ```
 
-This creates junctions under `C:\Users\250707012\.codex\skills\` for each `liam-git-workflow*` skill directory, plus a shared `C:\Users\250707012\.codex\references` junction that keeps the existing relative reference paths working.
+这个脚本会在 `C:\Users\250707012\.codex\skills\` 下为每个 `liam-git-workflow*` 技能目录创建 junction，并额外创建一个 `C:\Users\250707012\.codex\references` junction，确保原有相对引用路径仍然有效。
 
-## Current Scope
+## 当前范围
 
-This first pass focuses on policy, routing guidance, and repeatable prompts. It does not yet include command wrappers that automatically perform risky Git actions without confirmation.
+第一版重点放在策略沉淀、路由规则和可复用提示上。当前还不包含那些会在未确认前自动执行高风险 Git 操作的命令包装器。
