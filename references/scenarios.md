@@ -6,7 +6,7 @@ Input:
 
 ```text
 $liam-git-workflow
-创建一个线上bug修复的分支，修复login出现的网络问题
+创建一个线上 bug 修复分支，修复 login 出现的网络问题
 ```
 
 Expected classification:
@@ -64,7 +64,7 @@ Input:
 
 ```text
 $liam-git-workflow-sync-policy
-检查我的git全局配置
+检查我的 git 全局配置
 ```
 
 Expected output:
@@ -72,4 +72,3 @@ Expected output:
 - current config values
 - drift from policy
 - suggested commands to align
-

@@ -1,7 +1,7 @@
 {
   "name": "liam-git-workflow",
-  "version": "0.1.0",
-  "description": "Personal Git workflow plugin for Codex. Routes natural-language Git requests into Liam's main/dev workflow with branch, commit, sync, finish, hotfix, release, and policy checks.",
+  "version": "0.2.0",
+  "description": "Personal Git workflow plugin for Codex with a shared cross-runtime package for Codex skills, Claude commands, install, and update flows.",
   "author": {
     "name": "Liam"
   },
@@ -10,7 +10,7 @@
   "interface": {
     "displayName": "Liam Git Workflow",
     "shortDescription": "Personal Git workflow commands for Codex",
-    "longDescription": "Use Liam Git Workflow to create branches, draft Chinese Conventional Commits, sync branches, finish work, handle hotfixes, prepare releases, and audit Git policy alignment from one consistent Codex plugin.",
+    "longDescription": "Use Liam Git Workflow to create branches, draft Chinese Conventional Commits, sync branches, finish work, handle hotfixes, prepare releases, and audit Git policy alignment from one consistent Codex plugin package.",
     "developerName": "Liam",
     "category": "Productivity",
     "capabilities": [
@@ -25,4 +25,3 @@
     "brandColor": "#1F4E79"
   }
 }
-
