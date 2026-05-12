@@ -1,0 +1,21 @@
+{
+  "name": "liam-local-plugins",
+  "interface": {
+    "displayName": "Liam Local Plugins"
+  },
+  "plugins": [
+    {
+      "name": "liam-git-workflow",
+      "source": {
+        "source": "local",
+        "path": "."
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Productivity"
+    }
+  ]
+}
+

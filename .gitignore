@@ -1,0 +1,8 @@
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.pyc
+__pycache__/
+.tmp_ai_terms/
+.tmp_ai_terms2/
