@@ -32,22 +32,9 @@
 
 ## 在 Codex 中使用
 
-主入口：
-
 ```text
-$liam-git-workflow
-创建一个线上 bug 修复分支，修复 login 出现的网络问题
-```
-
-帮助入口：
-
-```text
+$liam-git-workflow 创建一个线上 bug 修复分支，修复 login 出现的网络问题 
 $liam-git-workflow-help
-```
-
-精确入口：
-
-```text
 $liam-git-workflow-create-branch
 $liam-git-workflow-commit
 $liam-git-workflow-sync-branch
@@ -59,21 +46,9 @@ $liam-git-workflow-sync-policy
 
 ## 在 Claude Code 中使用
 
-主入口：
-
 ```text
 /liam-git-workflow 创建一个线上 bug 修复分支，修复 login 出现的网络问题
-```
-
-帮助入口：
-
-```text
 /liam-git-workflow-help
-```
-
-精确入口：
-
-```text
 /liam-git-workflow-create-branch
 /liam-git-workflow-commit
 /liam-git-workflow-sync-branch
@@ -82,14 +57,6 @@ $liam-git-workflow-sync-policy
 /liam-git-workflow-release
 /liam-git-workflow-sync-policy
 ```
-
-## 使用约定
-
-- 在 Codex 中优先使用 `$liam-git-workflow`
-- 在 Claude Code 中优先使用 `/liam-git-workflow`
-- 不依赖 `$Liam Git Workflow`
-- 入口统一使用小写加连字符，保证触发稳定
-- 涉及高风险 Git 操作时，先给建议和命令，再确认是否执行
 
 ## 安装
 
@@ -134,6 +101,33 @@ powershell -ExecutionPolicy Bypass -File .\scripts\update.ps1 -PullLatest
 ```
 
 `-PullLatest` 会在仓库存在本地未提交修改时拒绝执行，避免误覆盖工作区。
+
+## 提交校验
+
+这一版增加了仓库级 `commit-msg` 校验，用来拒绝不符合规则的提交信息。校验规则包括：
+
+- 格式必须为 `<type>(<scope>): <subject>`
+- `type` 必须在 Conventional Commit 白名单中
+- `scope` 必须是紧凑英文短词
+- `subject` 必须包含中文字符
+
+在目标仓库根目录启用 hook：
+
+```powershell
+powershell -ExecutionPolicy Bypass -File <liam-git-workflow-install-path>\scripts\install_repo_hooks.ps1 -RepoRoot .
+```
+
+这个脚本会把内置的 hook 模板和校验脚本物化到目标仓库的 `.githooks/`，然后设置：
+
+```text
+core.hooksPath = .githooks
+```
+
+手动校验一个提交信息文件：
+
+```powershell
+powershell -ExecutionPolicy Bypass -File .\.githooks\validate_commit_message.ps1 -CommitMessageFile .git\COMMIT_EDITMSG
+```
 
 ## 目录结构
 
@@ -195,3 +189,4 @@ powershell -ExecutionPolicy Bypass -File .\scripts\link_codex_global_skills.ps1
 - 官方 marketplace 发布
 - 自动执行危险 Git 动作
 - 远端版本检测和升级提醒
+
