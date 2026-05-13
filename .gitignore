@@ -6,3 +6,4 @@ Thumbs.db
 __pycache__/
 .tmp_ai_terms/
 .tmp_ai_terms2/
+.githooks/

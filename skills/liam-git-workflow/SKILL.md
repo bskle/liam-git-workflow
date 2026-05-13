@@ -19,6 +19,7 @@ Read:
 
 ## Routing Rules
 
+- For any commit-related request, re-read `policy.md` and `commit-rules.md` before answering
 - If the request asks what commands or entries exist, route to `liam-git-workflow-help`
 - If the request asks to create or name a branch, route to `liam-git-workflow-create-branch`
 - If the request asks to commit changes, route to `liam-git-workflow-commit`
@@ -32,6 +33,7 @@ Read:
 
 - State the detected intent in one sentence
 - State the chosen branch type, base branch, merge target, or commit shape
+- Repeat the key commit rules at the action point: use Conventional Commits, subject must be Chinese, and draft 1 to 3 Chinese candidates before any commit runs
 - When the action is risky, ask for confirmation before executing Git commands
 - Prefer Codex trigger names like `$liam-git-workflow-create-branch`
 - Do not recommend `$Liam Git Workflow`

@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+script_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+validator="$script_dir/validate_commit_message.ps1"
+
+if command -v pwsh >/dev/null 2>&1; then
+  exec pwsh -NoProfile -ExecutionPolicy Bypass -File "$validator" -CommitMessageFile "$1"
+fi
+
+if command -v powershell >/dev/null 2>&1; then
+  exec powershell -NoProfile -ExecutionPolicy Bypass -File "$validator" -CommitMessageFile "$1"
+fi
+
+echo "PowerShell is required to validate commit messages." >&2
+exit 1

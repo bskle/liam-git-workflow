@@ -82,12 +82,14 @@ function Install-LiamGitWorkflowCodex {
     $skillsSourceRoot = Join-Path $RepoRoot 'skills'
     $referencesSourceRoot = Join-Path $RepoRoot 'references'
     $scriptsSourceRoot = Join-Path $RepoRoot 'scripts'
+    $hooksSourceRoot = Join-Path $RepoRoot 'hooks'
     $skillsTargetRoot = Join-Path $CodexHome 'skills'
     $supportTargetRoot = Join-Path $skillsTargetRoot 'liam-git-workflow-support'
 
     Ensure-Directory -Path $skillsTargetRoot
     Copy-DirectoryTree -Source $referencesSourceRoot -Destination (Join-Path $supportTargetRoot 'references')
     Copy-DirectoryTree -Source $scriptsSourceRoot -Destination (Join-Path $supportTargetRoot 'scripts')
+    Copy-DirectoryTree -Source $hooksSourceRoot -Destination (Join-Path $supportTargetRoot 'hooks')
 
     $skillDirs = Get-ChildItem -LiteralPath $skillsSourceRoot -Directory |
         Where-Object { $_.Name -like 'liam-git-workflow*' } |
@@ -123,13 +125,16 @@ function Install-LiamGitWorkflowClaude {
     $commandsSourceRoot = Join-Path $RepoRoot 'claude\commands'
     $referencesSourceRoot = Join-Path $RepoRoot 'references'
     $scriptsSourceRoot = Join-Path $RepoRoot 'scripts'
+    $hooksSourceRoot = Join-Path $RepoRoot 'hooks'
     $targetRoot = Join-Path $ClaudeHome '.claude\commands\liam-git-workflow'
     $targetReferencesRoot = Join-Path $targetRoot 'references'
     $targetScriptsRoot = Join-Path $targetRoot 'scripts'
+    $targetHooksRoot = Join-Path $targetRoot 'hooks'
 
     Ensure-Directory -Path $targetRoot
     Copy-DirectoryTree -Source $referencesSourceRoot -Destination $targetReferencesRoot
     Copy-DirectoryTree -Source $scriptsSourceRoot -Destination $targetScriptsRoot
+    Copy-DirectoryTree -Source $hooksSourceRoot -Destination $targetHooksRoot
 
     $referencePath = Convert-ToForwardSlashPath -Path $targetReferencesRoot
     $scriptPath = Convert-ToForwardSlashPath -Path $targetScriptsRoot
