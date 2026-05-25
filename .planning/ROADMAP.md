@@ -6,7 +6,7 @@
 
 ## Phases
 
-- [ ] **Phase 1: Diagnostic Foundation** — 定义诊断技能的触发条件、诊断顺序、输出契约、交互边界和知识库
+- [ ] **Phase 1: Diagnostic Foundation** — 定义诊断技能的触发条件、诊断顺序、输出契约、交互边界和知识库 (1 plan)
 - [ ] **Phase 2: Diagnostic Core** — 实现诊断脚本，覆盖五层诊断，产出结构化结论，最小化人工交互
 - [ ] **Phase 3: Integration** — 将诊断能力接入现有工作流技能、场景文档和同步命令
 
@@ -20,7 +20,8 @@
   1. Agent 可以访问诊断技能定义（SKILL.md），其中明确指定触发条件、五层诊断顺序、输出契约、自动/人工交互边界
   2. 用户可以通过命令入口（claude/commands/）手动调用远程诊断，作为自动触发失败时的回退路径
   3. Agent 可以访问参考知识库（remote-diagnostics.md），其中包含故障分类、信号到原因映射、标准修复动作、升级与人工交互边界
-**Plans**: TBD
+**Plans:** 1 plan
+- [ ] 01-01-PLAN.md — 创建三个文档资产：技能定义（DIAG-01）、命令入口（DIAG-02）、参考知识库（DIAG-03）
 
 ### Phase 2: Diagnostic Core
 **Goal**: 诊断脚本产出可操作的结构化结果，覆盖全部五层诊断，仅在下限 CLI 可观测范围时询问人工
@@ -46,6 +47,6 @@
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
-| 1. Diagnostic Foundation | 0/0 | Not started | - |
+| 1. Diagnostic Foundation | 0/1 | Not started | - |
 | 2. Diagnostic Core | 0/0 | Not started | - |
 | 3. Integration | 0/0 | Not started | - |
