@@ -31,6 +31,7 @@ Response rules:
 
 - state the detected intent in one sentence
 - state the chosen branch type, base branch, merge target, or commit shape
+- for commit-related requests, re-read commit rules and repeat that the subject must be Chinese before any commit runs
 - ask for confirmation before risky git commands
 - prefer lower-case `liam-git-workflow-*` command names
 - do not recommend `Liam Git Workflow`

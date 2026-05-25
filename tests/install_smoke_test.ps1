@@ -57,6 +57,7 @@ $claudeHome = Join-Path $workspaceRoot 'claude-home'
 $codexSkillsRoot = Join-Path $codexHome 'skills'
 $codexSupportRoot = Join-Path $codexSkillsRoot 'liam-git-workflow-support'
 $claudeCommandsTarget = Join-Path $claudeHome '.claude\commands\liam-git-workflow'
+$targetRepoRoot = Join-Path $workspaceRoot 'target-repo'
 
 try {
     New-Item -ItemType Directory -Path $codexSkillsRoot -Force | Out-Null
@@ -71,8 +72,12 @@ try {
     Assert-PathExists (Join-Path $codexSkillsRoot 'liam-git-workflow-commit') 'Codex commit skill should be installed.'
     Assert-PathExists (Join-Path $codexSupportRoot 'references\policy.md') 'Codex support references should be installed.'
     Assert-PathExists (Join-Path $codexSupportRoot 'scripts\audit_git_config.ps1') 'Codex support scripts should be installed.'
+    Assert-PathExists (Join-Path $codexSupportRoot 'scripts\validate_commit_message.ps1') 'Codex support validator script should be installed.'
+    Assert-PathExists (Join-Path $codexSupportRoot 'hooks\commit-msg') 'Codex support hook template should be installed.'
     Assert-PathExists (Join-Path $claudeCommandsTarget 'liam-git-workflow.md') 'Claude root command should be installed.'
     Assert-PathExists (Join-Path $claudeCommandsTarget 'liam-git-workflow-commit.md') 'Claude commit command should be installed.'
+    Assert-PathExists (Join-Path $claudeCommandsTarget 'scripts\validate_commit_message.ps1') 'Claude support validator script should be installed.'
+    Assert-PathExists (Join-Path $claudeCommandsTarget 'hooks\commit-msg') 'Claude support hook template should be installed.'
     Assert-PathExists (Join-Path $claudeHome '.liam-git-workflow\install.json') 'Install metadata should exist.'
 
     $installedSkill = Get-Content -LiteralPath (Join-Path $codexSkillsRoot 'liam-git-workflow\SKILL.md') -Raw
@@ -89,6 +94,18 @@ try {
         -ClaudeHome $claudeHome | Out-Null
 
     Assert-PathExists (Join-Path $claudeCommandsTarget 'liam-git-workflow-sync-policy.md') 'Update should preserve Claude commands.'
+
+    New-Item -ItemType Directory -Path $targetRepoRoot -Force | Out-Null
+    & git -C $targetRepoRoot init | Out-Null
+
+    $installedHookScript = Join-Path $codexSupportRoot 'scripts\install_repo_hooks.ps1'
+    & powershell -ExecutionPolicy Bypass -File $installedHookScript -RepoRoot $targetRepoRoot | Out-Null
+
+    Assert-PathExists (Join-Path $targetRepoRoot '.githooks\commit-msg') 'Installed hook script should materialize commit-msg into the target repo.'
+    Assert-PathExists (Join-Path $targetRepoRoot '.githooks\validate_commit_message.ps1') 'Installed hook script should copy the validator into the target repo.'
+
+    $hooksPath = (& git -C $targetRepoRoot config --get core.hooksPath).Trim()
+    Assert-True ($hooksPath -eq '.githooks') 'Installed hook script should point core.hooksPath to .githooks.'
 }
 finally {
     if (Test-Path -LiteralPath $workspaceRoot) {
