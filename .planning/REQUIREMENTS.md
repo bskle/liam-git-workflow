@@ -4,12 +4,12 @@
 
 ### Diagnostic Skill
 
-- [ ] **DIAG-01**: 创建 `skills/liam-git-workflow-remote-diagnose/SKILL.md` — 定义诊断技能：触发条件、诊断顺序、输出契约、自动/人工交互边界
-- [ ] **DIAG-02**: 创建 `claude/commands/liam-git-workflow-remote-diagnose.md` — 手动命令入口，作为自动触发失败时的回退路径
+- [x] **DIAG-01**: 创建 `skills/liam-git-workflow-remote-diagnose/SKILL.md` — 定义诊断技能：触发条件、诊断顺序、输出契约、自动/人工交互边界
+- [x] **DIAG-02**: 创建 `claude/commands/liam-git-workflow-remote-diagnose.md` — 手动命令入口，作为自动触发失败时的回退路径
 
 ### Diagnostic Core
 
-- [ ] **DIAG-03**: 创建 `references/remote-diagnostics.md` — 故障分类、信号到原因映射、标准修复动作、升级与人工交互边界
+- [x] **DIAG-03**: 创建 `references/remote-diagnostics.md` — 故障分类、信号到原因映射、标准修复动作、升级与人工交互边界
 - [ ] **DIAG-04**: 创建 `scripts/diagnose_git_remote.ps1` — 诊断脚本：收集本地 Git 状态、远程/分支配置、代理/凭据配置、最小连接探测、输出结构化结果
 
 ### Integration
