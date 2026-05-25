@@ -43,7 +43,7 @@
   2. 场景文档（scenarios.md）包含 push、pull、fetch、ls-remote 各至少一个远程故障场景示例
   3. 同步相关命令文档（sync-branch）引用远程诊断能力
 **Plans:** 1 plan
-- [ ] 03-01-PLAN.md — 三文件集成：主技能路由规则更新、场景文档补充、同步技能故障排除引用
+- [x] 03-01-PLAN.md — 三文件集成：主技能路由规则更新、场景文档补充、同步技能故障排除引用
 
 ## Progress
 
