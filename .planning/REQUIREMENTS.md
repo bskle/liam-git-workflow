@@ -40,16 +40,17 @@
 
 | REQ-ID | Source | Phase |
 |--------|--------|-------|
-| DIAG-01 | 设计文档 §4.1 | — |
-| DIAG-02 | 设计文档 §4.2 | — |
-| DIAG-03 | 设计文档 §4.3 | — |
-| DIAG-04 | 设计文档 §4.4 | — |
-| DIAG-05 | 设计文档 §5.1 | — |
-| DIAG-06 | 设计文档 §5.2 | — |
-| DIAG-07 | 设计文档 §5.2 | — |
-| DIAG-08 | 设计文档 §7 | — |
-| DIAG-09 | 设计文档 §8 | — |
-| DIAG-10 | 设计文档 §10 | — |
+| DIAG-01 | 设计文档 §4.1 | Phase 1 — Diagnostic Foundation |
+| DIAG-02 | 设计文档 §4.2 | Phase 1 — Diagnostic Foundation |
+| DIAG-03 | 设计文档 §4.3 | Phase 1 — Diagnostic Foundation |
+| DIAG-04 | 设计文档 §4.4 | Phase 2 — Diagnostic Core |
+| DIAG-05 | 设计文档 §5.1 | Phase 3 — Integration |
+| DIAG-06 | 设计文档 §5.2 | Phase 3 — Integration |
+| DIAG-07 | 设计文档 §5.2 | Phase 3 — Integration |
+| DIAG-08 | 设计文档 §7 | Phase 2 — Diagnostic Core |
+| DIAG-09 | 设计文档 §8 | Phase 2 — Diagnostic Core |
+| DIAG-10 | 设计文档 §10 | Phase 2 — Diagnostic Core |
 
 ---
 *Created: 2026-05-25*
+*Updated: 2026-05-25 — Traceability populated after roadmap creation*
