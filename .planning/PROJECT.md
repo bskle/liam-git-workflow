@@ -21,14 +21,15 @@
 - ✓ Release 流程 — `liam-git-workflow-release`
 - ✓ 本机 Git 配置审计 — `liam-git-workflow-sync-policy`
 - ✓ Codex / Claude Code 双运行时安装与更新 — `install.ps1` / `update.ps1`
+- ✓ Git 远程操作失败自动触发诊断 — `liam-git-workflow-remote-diagnose` — Validated in Phase 03
+- ✓ 五层诊断覆盖（本地/远程/认证/网络/策略） — `diagnose_git_remote.ps1` + `remote-diagnostics.md` — Validated in Phase 02
+- ✓ 双入口（自动触发 + 手动命令）共享同一诊断核心 — Validated in Phase 03
+- ✓ 结构化诊断输出（8-field JSON contract） — Validated in Phase 02
+- ✓ 人力交互最小化标准化 — 仅在下限 CLI 不可观测时询问 — Validated in Phase 02
 
 ### Active
 
-- [ ] **WF-01**: Git 远程操作失败时，Agent 自动触发诊断流程（push/pull/fetch/ls-remote）
-- [ ] **WF-02**: 诊断覆盖本地状态、远程配置、认证、网络路径、仓库策略五层
-- [ ] **WF-03**: 手动入口可调用远程诊断（自动触发失败时的回退路径）
-- [ ] **WF-04**: 诊断输出结构化结果，主 Agent 可直接据此执行修复
-- [ ] **WF-05**: 人类交互最小化且标准化（仅在下限 CLI 可观测范围时询问）
+*(All requirements validated — see Validated section)*
 
 ### Out of Scope
 
@@ -44,7 +45,7 @@
 - 现有 9 个技能（skills/）、8 个命令入口（claude/commands/）、参考文档（references/）
 - 测试使用 Pester（PowerShell 测试框架），位于 `tests/`
 - Git 提交规范遵循 ~/.claude/CLAUDE.md 第 2 章（Conventional Commits + 中文 subject）
-- 当前分支 `feature/workflow-git-push-network-skill` 已完成设计文档，待实现
+- 当前分支 `feature/workflow-git-push-network-skill` 已完成所有 3 个 Phase 实现
 
 ## Constraints
 
@@ -57,9 +58,9 @@
 
 | Decision | Rationale | Outcome |
 |----------|-----------|---------|
-| 双入口设计（自动触发 + 手动命令） | 设计文档第 3 章：避免分裂诊断逻辑，两种入口共享同一核心 | — Pending |
-| 五层诊断顺序（本地→远程→认证→网络→策略） | 减少误判，先排除本地问题再分析网络 | — Pending |
-| 结构化输出契约 | 主 Agent 需要可操作的结论而非自由文本 | — Pending |
+| 双入口设计（自动触发 + 手动命令） | 设计文档第 3 章：避免分裂诊断逻辑，两种入口共享同一核心 | Implemented — Phase 03 |
+| 五层诊断顺序（本地→远程→认证→网络→策略） | 减少误判，先排除本地问题再分析网络 | Implemented — Phase 02 |
+| 结构化输出契约 | 主 Agent 需要可操作的结论而非自由文本 | Implemented — Phase 02 |
 
 ## Evolution
 
@@ -79,4 +80,4 @@ This document evolves at phase transitions and milestone boundaries.
 4. Update Context with current state
 
 ---
-*Last updated: 2026-05-25 after initialization*
+*Last updated: 2026-05-25 after Phase 03 completion*
