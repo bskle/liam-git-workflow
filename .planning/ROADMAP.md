@@ -31,7 +31,8 @@
   1. 对存在远程问题的仓库运行诊断脚本，输出结构化结论（包含问题分类、证据、可能原因、置信度、已执行动作、建议下一步、是否需要人工交互）
   2. 诊断系统性地覆盖五层：本地仓库状态 → 远程目标验证 → 认证/授权 → 网络路径 → 仓库策略
   3. 仅在 CLI 不可观测的信息时请求人工交互（浏览器状态、GitHub 权限页、VPN、代理客户端、系统证书）
-**Plans**: TBD
+**Plans:** 1 plan
+- [ ] 02-01-PLAN.md — 实现 scripts/diagnose_git_remote.ps1 诊断核心脚本：五层诊断（本地/远程/认证/网络/策略）+ 15+ 条信号到原因映射 + 结构化 JSON 输出（8 字段契约）
 
 ### Phase 3: Integration
 **Goal**: 现有工作流技能在远程操作失败时自动触发或引用诊断能力
@@ -47,6 +48,6 @@
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
-| 1. Diagnostic Foundation | 0/1 | Not started | - |
-| 2. Diagnostic Core | 0/0 | Not started | - |
+| 1. Diagnostic Foundation | 1/1 | Done | 2026-05-25 |
+| 2. Diagnostic Core | 0/1 | Planned | - |
 | 3. Integration | 0/0 | Not started | - |
