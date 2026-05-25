@@ -42,7 +42,8 @@
   1. 当远程 Git 操作（push/pull/fetch/ls-remote）失败时，主工作流技能（liam-git-workflow）将请求路由到诊断能力
   2. 场景文档（scenarios.md）包含 push、pull、fetch、ls-remote 各至少一个远程故障场景示例
   3. 同步相关命令文档（sync-branch）引用远程诊断能力
-**Plans**: TBD
+**Plans:** 1 plan
+- [ ] 03-01-PLAN.md — 三文件集成：主技能路由规则更新、场景文档补充、同步技能故障排除引用
 
 ## Progress
 
@@ -50,4 +51,4 @@
 |-------|----------------|--------|-----------|
 | 1. Diagnostic Foundation | 1/1 | Done | 2026-05-25 |
 | 2. Diagnostic Core | 0/1 | Planned | - |
-| 3. Integration | 0/0 | Not started | - |
+| 3. Integration | 0/1 | Planned | - |
