@@ -16,6 +16,7 @@ Read:
 - `../../references/commit-rules.md`
 - `../../references/pr-rules.md`
 - `../../references/scenarios.md`
+- `../../references/remote-diagnostics.md`
 
 ## Routing Rules
 
@@ -28,6 +29,8 @@ Read:
 - If the request is about a production issue, route to `liam-git-workflow-hotfix`
 - If the request is about tagging or merging `dev` into `main`, route to `liam-git-workflow-release`
 - If the request asks to audit local Git policy or global config, route to `liam-git-workflow-sync-policy`
+- If the request describes a remote operation failure (push/pull/fetch/ls-remote returning errors like "Authentication failed", "Could not resolve host", "Connection timed out", "protected branch", "repository not found", "Permission denied") or asks to diagnose remote connectivity problems, route to `liam-git-workflow-remote-diagnose`
+- If a remote Git operation (`push`, `pull`, `fetch`, `ls-remote`) fails during command execution with a non-zero exit status, stop the current action and route to `liam-git-workflow-remote-diagnose` for structured diagnosis before any retry
 
 ## Response Style
 
@@ -37,4 +40,5 @@ Read:
 - When the action is risky, ask for confirmation before executing Git commands
 - Prefer Codex trigger names like `$liam-git-workflow-create-branch`
 - Do not recommend `$Liam Git Workflow`
+- When a remote operation fails, do not retry the same command immediately — first route to the diagnostic skill, then apply the structured recommendation
 
