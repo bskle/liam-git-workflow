@@ -31,7 +31,7 @@
 **Plans:** 4 plans
 
 Plans:
-- [ ] 04-01-PLAN.md — Claude Code 插件基础设施 (plugin.json + hooks.json + 废弃 claude/commands/)
-- [ ] 04-02-PLAN.md — Codex 插件配置精化 (版本升级 + marketplace 路径修正 + VERSION)
-- [ ] 04-03-PLAN.md — 安装脚本重写 (symlink 模型 install.ps1 + common.ps1 简化 + 兼容脚本更新)
-- [ ] 04-04-PLAN.md — 文档更新 (README 安装/使用/结构章节 + CHANGELOG v0.3.0)
+- [x] 04-01-PLAN.md — Claude Code 插件基础设施 (plugin.json + hooks.json + 废弃 claude/commands/)
+- [x] 04-02-PLAN.md — Codex 插件配置精化 (版本升级 + marketplace 路径修正 + VERSION)
+- [x] 04-03-PLAN.md — 安装脚本重写 (symlink 模型 install.ps1 + common.ps1 简化 + 兼容脚本更新)
+- [x] 04-04-PLAN.md — 文档更新 (README 安装/使用/结构章节 + CHANGELOG v0.3.0)
