@@ -21,8 +21,8 @@
 
 当前版本支持两个生态：
 
-- Codex：通过本地插件元数据和全局 skills 安装
-- Claude Code：通过自定义 slash commands 安装
+- **Claude Code**：通过 `.claude-plugin/plugin.json` 作为标准插件安装，skills 通过 Skill tool 自动可用
+- **Codex**：通过 `.codex-plugin/plugin.json` 和市场注册或 symlink 脚本安装
 
 不包含：
 
@@ -31,6 +31,8 @@
 - 面向 Cursor、Copilot、Gemini、OpenCode 的适配层
 
 ## 在 Codex 中使用
+
+Codex 安装后，以下技能可通过 Skill tool 调用:
 
 ```text
 $liam-git-workflow 创建一个线上 bug 修复分支，修复 login 出现的网络问题 
@@ -42,59 +44,98 @@ $liam-git-workflow-finish
 $liam-git-workflow-hotfix
 $liam-git-workflow-release
 $liam-git-workflow-sync-policy
+$liam-git-workflow-remote-diagnose
 ```
 
 ## 在 Claude Code 中使用
 
-```text
-/liam-git-workflow 创建一个线上 bug 修复分支，修复 login 出现的网络问题
-/liam-git-workflow-help
-/liam-git-workflow-create-branch
-/liam-git-workflow-commit
-/liam-git-workflow-sync-branch
-/liam-git-workflow-finish
-/liam-git-workflow-hotfix
-/liam-git-workflow-release
-/liam-git-workflow-sync-policy
-```
+插件安装后，所有技能通过 Skill tool 自动可用。在会话中使用自然语言描述 Git 操作需求即可。
+
+主要技能入口:
+- `liam-git-workflow` — 默认路由入口
+- `liam-git-workflow-help` — 查看所有可用技能
+- `liam-git-workflow-create-branch` — 创建分支
+- `liam-git-workflow-commit` — 生成中文 Conventional Commit
+- `liam-git-workflow-sync-branch` — 同步分支
+- `liam-git-workflow-finish` — 完成分支收尾
+- `liam-git-workflow-hotfix` — 生产 hotfix 流程
+- `liam-git-workflow-release` — 发布流程
+- `liam-git-workflow-sync-policy` — 审计 Git 配置与策略对齐
+- `liam-git-workflow-remote-diagnose` — 远程操作失败诊断
 
 ## 安装
 
-### 同时安装 Codex 和 Claude Code
+### 前置条件
 
-在仓库根目录运行：
+- Windows 11, PowerShell 5.1+, Git 2.40+
+- Claude Code (如需 Claude Code 集成) 或 Codex (如需 Codex 集成)
 
-```powershell
-powershell -ExecutionPolicy Bypass -File .\scripts\install.ps1
+### Claude Code 安装
+
+**方式 1: /plugin install (推荐)**
+
+在 Claude Code 会话中运行:
+```text
+/plugin install <仓库路径>
 ```
 
-默认行为：
+Claude Code 会自动发现 `.claude-plugin/plugin.json`，加载 skills/ 目录中的全部技能，并注册 hooks/ 中的钩子。
 
-- 将 Codex skills 安装到 `$env:CODEX_HOME\skills\` 或 `C:\Users\<you>\.codex\skills\`
-- 将 Claude 命令安装到 `C:\Users\<you>\.claude\commands\liam-git-workflow\`
-- 在 `C:\Users\<you>\.liam-git-workflow\install.json` 写入安装元数据
+**方式 2: 启动参数**
 
-### 只安装 Codex
+```powershell
+claude --plugin-dir <仓库路径>
+```
+
+安装后，skills/ 中的技能通过 Skill tool 自动可用。无需额外配置。
+
+### Codex 安装
+
+**方式 1: 运行安装脚本 (推荐)**
 
 ```powershell
 powershell -ExecutionPolicy Bypass -File .\scripts\install.ps1 -SkipClaude
 ```
 
-### 只安装 Claude Code
+脚本会在 `~/.agents/skills/liam-git-workflow` 创建指向 `skills/` 的目录符号链接 (directory junction)。Codex 启动时自动扫描该路径。
+
+**方式 2: 添加市场源**
+
+将仓库的 `.agents/plugins/marketplace.json` 添加到 Codex 的市场源列表中，然后在 Codex 插件界面安装 "liam-git-workflow"。
+
+### 同时安装两个平台
 
 ```powershell
-powershell -ExecutionPolicy Bypass -File .\scripts\install.ps1 -SkipCodex
+powershell -ExecutionPolicy Bypass -File .\scripts\install.ps1
 ```
+
+不加 `-SkipCodex` 或 `-SkipClaude` 标志时，脚本会同时配置 Codex (symlink) 和提示 Claude Code 安装命令。
+
+### 从旧版本迁移
+
+如果你之前使用过 0.2.0 或更早版本（文件复制模型），运行带清理标志的安装命令:
+
+```powershell
+powershell -ExecutionPolicy Bypass -File .\scripts\install.ps1 -CleanLegacy
+```
+
+`-CleanLegacy` 会清理以下旧安装产物:
+- `~/.codex/skills/liam-git-workflow*` (旧 Codex 文件复制)
+- `~/.claude/commands/liam-git-workflow/` (旧 Claude Code slash commands)
+- 已失效的旧 directory junction
 
 ## 更新
 
-使用当前仓库内容重新同步安装产物：
+symlink 安装模式下，更新仓库即更新插件:
 
-```powershell
-powershell -ExecutionPolicy Bypass -File .\scripts\update.ps1
+```bash
+cd <仓库路径>
+git pull --rebase
 ```
 
-如果你希望脚本先从远端拉取最新版本，再执行同步：
+无需重新运行安装脚本 — symlink 直接指向仓库文件，git pull 后立即生效。
+
+如果你需要从 `main` 拉取最新版本后重新执行安装:
 
 ```powershell
 powershell -ExecutionPolicy Bypass -File .\scripts\update.ps1 -PullLatest
@@ -132,30 +173,28 @@ powershell -ExecutionPolicy Bypass -File .\.githooks\validate_commit_message.ps1
 ## 目录结构
 
 ```text
-.agents/plugins/
+.claude-plugin/
 .codex-plugin/
-claude/commands/
+.agents/plugins/
+skills/
+hooks/
 references/
 scripts/
-skills/
 tests/
 CHANGELOG.md
+README.md
 VERSION
 ```
 
 ## 安装后的目录策略
 
-为了避免覆盖用户已有的全局 `references` 目录，Codex 安装器不会再接管整个 `$CODEX_HOME\references`。当前策略是：
+所有技能文件通过 symlink (Codex) 或插件目录注册 (Claude Code) 直接指向仓库中的 `skills/` 目录。skill 内部引用 (`../../references/`、`../../scripts/`) 使用仓库内相对路径，在两种安装模式下均正确解析。
 
-- skills 安装到 `$CODEX_HOME\skills\liam-git-workflow*`
-- 共享支持文件安装到 `$CODEX_HOME\skills\liam-git-workflow-support\`
-- 安装时自动重写 skill 内部引用路径，让它们指向 support 目录
-
-Claude Code 安装器会把命令、参考资料和辅助脚本都放到：
-
-- `~/.claude/commands/liam-git-workflow/`
-
-这样安装产物是自包含的，更新时只需要重新运行安装器。
+这意味着:
+- 无需复制文件到平台特定目录
+- 无需在安装时重写 skill 内部路径
+- `git pull` 后技能内容自动更新
+- 同一仓库可同时服务于 Codex 和 Claude Code
 
 ## 兼容脚本
 
