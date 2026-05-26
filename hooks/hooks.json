@@ -1,0 +1,16 @@
+{
+  "hooks": {
+    "SessionStart": [
+      {
+        "matcher": "startup|clear|compact",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "powershell -NoProfile -ExecutionPolicy Bypass -Command \"Write-Output '{ \"hookSpecificOutput\": { \"hookEventName\": \"SessionStart\", \"additionalContext\": \"Git workflow policies loaded. Use Skill tool to discover available skills.\" } }'\"",
+            "async": false
+          }
+        ]
+      }
+    ]
+  }
+}
