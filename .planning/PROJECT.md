@@ -26,6 +26,10 @@
 - ✓ 双入口（自动触发 + 手动命令）共享同一诊断核心 — Validated in Phase 03
 - ✓ 结构化诊断输出（8-field JSON contract） — Validated in Phase 02
 - ✓ 人力交互最小化标准化 — 仅在下限 CLI 不可观测时询问 — Validated in Phase 02
+- ✓ Claude Code 插件化安装 — `.claude-plugin/plugin.json` + `/plugin install` + SessionStart 钩子 — Validated in Phase 04
+- ✓ Codex 插件配置精化 — `.codex-plugin/plugin.json` v0.3.0 + marketplace.json source.path 修正 — Validated in Phase 04
+- ✓ Symlink 安装模型 — `install.ps1` 重写 (mklink /J) + common.ps1 简化 + 旧版迁移 — Validated in Phase 04
+- ✓ 插件化文档更新 — README.md 安装/使用章节 + CHANGELOG.md v0.3.0 — Validated in Phase 04
 
 ### Active
 
@@ -61,6 +65,9 @@
 | 双入口设计（自动触发 + 手动命令） | 设计文档第 3 章：避免分裂诊断逻辑，两种入口共享同一核心 | Implemented — Phase 03 |
 | 五层诊断顺序（本地→远程→认证→网络→策略） | 减少误判，先排除本地问题再分析网络 | Implemented — Phase 02 |
 | 结构化输出契约 | 主 Agent 需要可操作的结论而非自由文本 | Implemented — Phase 02 |
+| Symlink 替代文件复制 | Codex bug #17344: 文件级 symlink 被跳过，需使用目录 junction (mklink /J) | Implemented — Phase 04 |
+| 插件化替代 slash commands | Claude Code `/plugin install` + skills 自动发现替代 `/command` 路由；废弃 claude/commands/ | Implemented — Phase 04 |
+| 尽力而为部署策略 | SessionStart hooks (受 bug #16538 限制，配置语法正确，修复后立即可用) | Implemented — Phase 04 |
 
 ## Evolution
 
@@ -80,4 +87,4 @@ This document evolves at phase transitions and milestone boundaries.
 4. Update Context with current state
 
 ---
-*Last updated: 2026-05-25 after Phase 03 completion*
+*Last updated: 2026-05-26 after Phase 04 completion*
