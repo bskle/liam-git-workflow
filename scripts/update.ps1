@@ -1,7 +1,5 @@
 param(
     [string]$RepoRoot,
-    [string]$CodexHome = $(if ($env:CODEX_HOME) { $env:CODEX_HOME } else { Join-Path $env:USERPROFILE '.codex' }),
-    [string]$ClaudeHome = $env:USERPROFILE,
     [switch]$SkipCodex,
     [switch]$SkipClaude,
     [switch]$PullLatest
@@ -32,9 +30,7 @@ if ($PullLatest) {
 $installArgs = @(
     '-ExecutionPolicy', 'Bypass',
     '-File', (Join-Path $PSScriptRoot 'install.ps1'),
-    '-RepoRoot', $resolvedRepoRoot,
-    '-CodexHome', $CodexHome,
-    '-ClaudeHome', $ClaudeHome
+    '-RepoRoot', $resolvedRepoRoot
 )
 
 if ($SkipCodex) {
