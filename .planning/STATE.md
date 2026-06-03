@@ -81,6 +81,12 @@ None yet.
 
 None yet.
 
+### Quick Tasks Completed
+
+| # | Description | Date | Commit | Directory |
+|---|-------------|------|--------|-----------|
+| 260603-nbx | 添加斜杠命令支持 — 对标 superpowers /superpowers:brainstorming | 2026-06-03 | d67dd2f | [260603-nbx](./quick/260603-nbx-superpowers-superpowers-brainstorming-li/) |
+
 ## Deferred Items
 
 | Category | Item | Status | Deferred At |
