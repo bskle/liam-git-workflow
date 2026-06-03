@@ -30,6 +30,7 @@
 - ✓ Codex 插件配置精化 — `.codex-plugin/plugin.json` v0.3.0 + marketplace.json source.path 修正 — Validated in Phase 04
 - ✓ Symlink 安装模型 — `install.ps1` 重写 (mklink /J) + common.ps1 简化 + 旧版迁移 — Validated in Phase 04
 - ✓ 插件化文档更新 — README.md 安装/使用章节 + CHANGELOG.md v0.3.0 — Validated in Phase 04
+- ✓ Bootstrap 元技能自动发现与路由 — `liam-git-workflow-bootstrap` + 1% 规则 + 10 技能清单 + hooks 引导注入 — Validated in Phase 05
 
 ### Active
 
@@ -46,10 +47,10 @@
 
 - 项目运行在 Windows 11 + PowerShell 环境
 - 设计文档位于 `docs/superpowers/specs/`，作为各功能的规格基线
-- 现有 9 个技能（skills/）、8 个命令入口（claude/commands/）、参考文档（references/）
-- 测试使用 Pester（PowerShell 测试框架），位于 `tests/`
+- 现有 11 个技能（skills/），包括 1 个 bootstrap 元技能 + 10 个工作流技能
+- 参考文档（references/）、脚本（scripts/）、钩子（hooks/）、测试（tests/）
 - Git 提交规范遵循 ~/.claude/CLAUDE.md 第 2 章（Conventional Commits + 中文 subject）
-- 当前分支 `feature/workflow-git-push-network-skill` 已完成所有 3 个 Phase 实现
+- 当前分支 `main` 已完成所有 5 个 Phase 实现
 
 ## Constraints
 
@@ -68,6 +69,7 @@
 | Symlink 替代文件复制 | Codex bug #17344: 文件级 symlink 被跳过，需使用目录 junction (mklink /J) | Implemented — Phase 04 |
 | 插件化替代 slash commands | Claude Code `/plugin install` + skills 自动发现替代 `/command` 路由；废弃 claude/commands/ | Implemented — Phase 04 |
 | 尽力而为部署策略 | SessionStart hooks (受 bug #16538 限制，配置语法正确，修复后立即可用) | Implemented — Phase 04 |
+| Bootstrap 元技能 Gatekeeper 模式 | 对标 superpowers using-superpowers：1% 规则强制 Agent 在 Git 操作前查询技能清单；bootstrap 作为发现层 + liam-git-workflow 作为路由层互补 | Implemented — Phase 05 |
 
 ## Evolution
 
@@ -87,4 +89,4 @@ This document evolves at phase transitions and milestone boundaries.
 4. Update Context with current state
 
 ---
-*Last updated: 2026-05-26 after Phase 04 completion*
+*Last updated: 2026-05-30 after Phase 05 completion*

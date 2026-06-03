@@ -16,6 +16,7 @@ List the available entries:
 - `$liam-git-workflow-hotfix`
 - `$liam-git-workflow-release`
 - `$liam-git-workflow-sync-policy`
+- `$liam-git-workflow-remote-diagnose`
 
 Explain:
 

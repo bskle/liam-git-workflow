@@ -36,7 +36,7 @@ Plans:
 - [x] 04-03-PLAN.md — 安装脚本重写 (symlink 模型 install.ps1 + common.ps1 简化 + 兼容脚本更新)
 - [x] 04-04-PLAN.md — 文档更新 (README 安装/使用/结构章节 + CHANGELOG v0.3.0)
 
-### Phase 5: 元技能引导 — 自动发现与路由
+### Phase 5: 元技能引导 — 自动发现与路由 ✓ (completed 2026-05-30)
 
 **Goal:** Agent 通过 bootstrap 元技能能自动感知所有 Git 工作流技能的存在，通过 1% 规则优先使用技能而非手动执行 Git 命令
 **Requirements:** None (self-contained meta-skill addition)
@@ -44,4 +44,4 @@ Plans:
 **Plans:** 1 plan
 
 Plans:
-- [ ] 05-01-PLAN.md — Bootstrap 元技能创建 (SKILL.md) + hooks.json SessionStart 更新
+- [x] 05-01-PLAN.md — Bootstrap 元技能创建 (SKILL.md) + hooks.json SessionStart 更新
