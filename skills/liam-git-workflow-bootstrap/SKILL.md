@@ -17,18 +17,20 @@ Git 操作信号包括：分支创建/切换、commit、push、pull、fetch、me
 
 ## 3. 技能清单
 
-| 技能名称 | 触发场景 | 典型请求示例 |
-|---------|---------|-------------|
-| `liam-git-workflow` | 自然语言 Git 请求，不确定用哪个技能 | "帮我提交代码"、"我要发布" |
-| `liam-git-workflow-help` | 询问可用命令列表或入口 | "有哪些 Git 命令可用"、"怎么用" |
-| `liam-git-workflow-create-branch` | 创建或命名分支 | "我要创建功能分支"、"新建 bugfix 分支" |
-| `liam-git-workflow-commit` | 提交变更 | "提交当前修改"、"帮我写提交信息" |
-| `liam-git-workflow-sync-branch` | 同步最新基线 | "同步 dev 分支最新代码"、"rebase main" |
-| `liam-git-workflow-finish` | 完成分支收尾，询问下一步 | "分支做完了下一步是什么" |
-| `liam-git-workflow-hotfix` | 生产问题修复 | "线上有 bug 需要紧急修复" |
-| `liam-git-workflow-release` | 打标签或合并 dev 到 main | "发布版本"、"打 tag"、"合并到 main" |
-| `liam-git-workflow-sync-policy` | 审计 Git 配置与策略 | "检查我的 Git 配置是否符合规范" |
-| `liam-git-workflow-remote-diagnose` | 远程操作失败诊断 | "push 失败了"、"认证错误"、"connection timed out" |
+所有技能在 Claude Code 中作为斜杠命令直接可用，输入 `/` 即可触发命令补全列表，或直接输入完整命令名调用。
+
+| 技能名称 | 斜杠命令 | 触发场景 | 典型请求示例 |
+|---------|---------|---------|-------------|
+| `liam-git-workflow` | `/liam-git-workflow` | 自然语言 Git 请求，不确定用哪个技能 | "帮我提交代码"、"我要发布" |
+| `liam-git-workflow-help` | `/liam-git-workflow-help` | 询问可用命令列表或入口 | "有哪些 Git 命令可用"、"怎么用" |
+| `liam-git-workflow-create-branch` | `/liam-git-workflow-create-branch` | 创建或命名分支 | "我要创建功能分支"、"新建 bugfix 分支" |
+| `liam-git-workflow-commit` | `/liam-git-workflow-commit` | 提交变更 | "提交当前修改"、"帮我写提交信息" |
+| `liam-git-workflow-sync-branch` | `/liam-git-workflow-sync-branch` | 同步最新基线 | "同步 dev 分支最新代码"、"rebase main" |
+| `liam-git-workflow-finish` | `/liam-git-workflow-finish` | 完成分支收尾，询问下一步 | "分支做完了下一步是什么" |
+| `liam-git-workflow-hotfix` | `/liam-git-workflow-hotfix` | 生产问题修复 | "线上有 bug 需要紧急修复" |
+| `liam-git-workflow-release` | `/liam-git-workflow-release` | 打标签或合并 dev 到 main | "发布版本"、"打 tag"、"合并到 main" |
+| `liam-git-workflow-sync-policy` | `/liam-git-workflow-sync-policy` | 审计 Git 配置与策略 | "检查我的 Git 配置是否符合规范" |
+| `liam-git-workflow-remote-diagnose` | `/liam-git-workflow-remote-diagnose` | 远程操作失败诊断 | "push 失败了"、"认证错误"、"connection timed out" |
 
 触发场景描述与 `liam-git-workflow` 主路由的 Routing Rules 保持一致，避免两套路由逻辑分歧。
 
@@ -59,21 +61,25 @@ Git 操作信号包括：分支创建/切换、commit、push、pull、fetch、me
 - 用户说: "提交当前修改"
 - Agent 看到 Git 操作信号 → 检查 bootstrap 技能清单 → 匹配 `liam-git-workflow-commit`
 - 调用 `liam-git-workflow-commit` 技能
+- 斜杠方式: 直接输入 `/liam-git-workflow-commit` 调用提交技能
 
 **示例 2: 不确定操作类型**
 - 用户说: "我要发布一个新版本"
 - Agent 不确定是 release 还是普通 tag → route to `liam-git-workflow` 主路由
 - 主路由判断: 合并 dev$\to$main + tag → 调用 `liam-git-workflow-release`
+- 斜杠方式: 直接输入 `/liam-git-workflow-release` 调用发布技能
 
 **示例 3: push 失败**
 - Agent 执行 git push 返回认证错误
 - Agent 不重试 → 检查 bootstrap 清单 → 匹配 `liam-git-workflow-remote-diagnose`
 - 调用诊断技能进行结构化故障排查
+- 斜杠方式: 直接输入 `/liam-git-workflow-remote-diagnose` 调用诊断技能
 
 **示例 4: 询问可用技能**
 - 用户说: "Git 工作流有哪些功能"
 - Agent → route to `liam-git-workflow-help`
 - Help 技能列出所有入口和用法
+- 斜杠方式: 输入 `/` 浏览命令补全列表，或直接输入 `/liam-git-workflow-bootstrap` 查看完整技能清单
 
 ## 7. 与 liam-git-workflow 主路由的关系
 
