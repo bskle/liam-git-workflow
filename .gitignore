@@ -7,3 +7,4 @@ __pycache__/
 .tmp_ai_terms/
 .tmp_ai_terms2/
 .githooks/
+.claude/
