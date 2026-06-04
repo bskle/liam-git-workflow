@@ -4,8 +4,8 @@ milestone: v1.0
 milestone_name: milestone
 status: between_phases
 stopped_at: Phase 05 completed
-last_updated: "2026-05-30T12:00:00.000Z"
-last_activity: 2026-05-30 -- Phase 05 completed
+last_updated: "2026-06-04T01:14:00.000Z"
+last_activity: 2026-06-04 -- Quick task 260603-o4w completed
 progress:
   total_phases: 2
   completed_phases: 2
@@ -86,6 +86,7 @@ None yet.
 | # | Description | Date | Commit | Directory |
 |---|-------------|------|--------|-----------|
 | 260603-nbx | 添加斜杠命令支持 — 对标 superpowers /superpowers:brainstorming | 2026-06-03 | d67dd2f | [260603-nbx](./quick/260603-nbx-superpowers-superpowers-brainstorming-li/) |
+| 260603-o4w | 技能名称缩短 — 对标 superpowers 命名模式 (11个目录重命名为短名称) | 2026-06-04 | 5222b22 | [260603-o4w](./quick/260603-o4w-superpowers-liam-git-workflow/) |
 
 ## Deferred Items
 
