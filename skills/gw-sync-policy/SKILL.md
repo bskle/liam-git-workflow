@@ -1,5 +1,5 @@
 ---
-name: liam-git-workflow-sync-policy
+name: gw-sync-policy
 description: Audit local Git configuration against Liam's workflow policy and report drift. Use when the user asks whether global git config matches policy, wants recommended git config commands, or needs a checklist before aligning a machine to the workflow.
 ---
 

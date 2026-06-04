@@ -1,5 +1,5 @@
 ---
-name: liam-git-workflow-create-branch
+name: gw-create-branch
 description: Choose the correct Git branch type, base branch, merge target, and normalized branch name for Liam's workflow. Use when the user asks to create a branch, name a branch, decide between feature/fix/hotfix/chore/docs/refactor, or determine whether to branch from dev or main.
 ---
 

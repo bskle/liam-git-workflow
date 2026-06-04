@@ -1,5 +1,5 @@
 ---
-name: liam-git-workflow-hotfix
+name: gw-hotfix
 description: Apply Liam's production hotfix path from main through patch release and sync-back to dev. Use when the issue is already live in production, the user mentions urgent repair, or asks whether a bug should be handled as a hotfix instead of a normal fix branch.
 ---
 

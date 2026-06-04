@@ -1,5 +1,5 @@
 ---
-name: liam-git-workflow-remote-diagnose
+name: gw-diagnose
 description: Diagnose Git remote operation failures (push/pull/fetch/ls-remote) through a five-layer systematic check covering local state, remote config, authentication, network path, and repository policy. Returns a structured diagnosis for the main agent to act on. Use when a remote Git command fails with non-zero exit status, or when the user suspects a remote connectivity problem.
 ---
 
@@ -33,7 +33,7 @@ This skill activates automatically when:
 
 The user can invoke this skill directly via:
 
-- The `liam-git-workflow-remote-diagnose` command
+- The `gw-diagnose` command
 - Direct skill routing from the main workflow hub
 - Proactive invocation when remote connectivity is suspected but not yet confirmed by a failure
 

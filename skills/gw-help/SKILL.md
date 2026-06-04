@@ -1,5 +1,5 @@
 ---
-name: liam-git-workflow-help
+name: gw-help
 description: Show the available Liam Git Workflow entries, when to use each one, and example prompts. Use when the user asks for help, forgets an entry name, or wants to know whether the main entry can route requests automatically.
 ---
 
@@ -7,20 +7,20 @@ description: Show the available Liam Git Workflow entries, when to use each one,
 
 List the available entries:
 
-- `$liam-git-workflow`
-- `$liam-git-workflow-help`
-- `$liam-git-workflow-create-branch`
-- `$liam-git-workflow-commit`
-- `$liam-git-workflow-sync-branch`
-- `$liam-git-workflow-finish`
-- `$liam-git-workflow-hotfix`
-- `$liam-git-workflow-release`
-- `$liam-git-workflow-sync-policy`
-- `$liam-git-workflow-remote-diagnose`
+- `$gw`
+- `$gw-help`
+- `$gw-create-branch`
+- `$gw-commit`
+- `$gw-sync`
+- `$gw-finish`
+- `$gw-hotfix`
+- `$gw-release`
+- `$gw-sync-policy`
+- `$gw-diagnose`
 
 Explain:
 
-- `$liam-git-workflow` is the main natural-language entry
+- `$gw` is the main natural-language entry
 - users do not need to specify a sub-entry when the main entry is enough
 - the stable trigger format is lower-case hyphen-case
 

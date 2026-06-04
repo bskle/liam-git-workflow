@@ -1,5 +1,5 @@
 ---
-name: liam-git-workflow-release
+name: gw-release
 description: Guide Liam's release flow from dev to main, including tags and release notes. Use when the user wants to prepare a release, merge dev into main, choose a release tag, or confirm what should happen before a production release.
 ---
 

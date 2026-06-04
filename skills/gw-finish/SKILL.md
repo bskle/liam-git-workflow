@@ -1,5 +1,5 @@
 ---
-name: liam-git-workflow-finish
+name: gw-finish
 description: Guide the final Git step for a completed branch in Liam's workflow. Use when the user says work is finished, asks what to do next with a feature/fix branch, needs PR summary guidance, or wants to know the correct merge target and finish checklist.
 ---
 

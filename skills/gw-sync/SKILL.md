@@ -1,5 +1,5 @@
 ---
-name: liam-git-workflow-sync-branch
+name: gw-sync
 description: Decide how the current work branch should sync with its base branch in Liam's workflow. Use when the user wants to pull latest changes, rebase onto dev or main, resolve branch drift, or asks how to sync a feature, fix, or hotfix branch safely.
 ---
 
@@ -31,7 +31,7 @@ Provide:
 
 When a sync operation fails with a Git remote error (push/pull/fetch), do not retry the same command immediately. Instead:
 
-1. Route to `liam-git-workflow-remote-diagnose` for structured five-layer diagnosis
+1. Route to `gw-diagnose` for structured five-layer diagnosis
 2. Apply the recommended fix from the diagnostic output (problem_category, likely_cause, recommended_next_action)
 3. Retry the sync operation only after the root cause has been addressed
 

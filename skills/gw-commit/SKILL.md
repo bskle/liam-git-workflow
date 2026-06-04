@@ -1,5 +1,5 @@
 ---
-name: liam-git-workflow-commit
+name: gw-commit
 description: Draft Chinese Conventional Commit messages for Liam's workflow and check whether the current change set is mixed. Use when the user asks to commit current changes, wants a commit title, or needs help choosing feat/fix/docs/chore/refactor/test/build/ci/perf/revert.
 ---
 

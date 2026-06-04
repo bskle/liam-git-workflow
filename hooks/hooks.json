@@ -6,7 +6,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "powershell -NoProfile -ExecutionPolicy Bypass -Command \"$o = @{ hookSpecificOutput = @{ hookEventName = 'SessionStart'; additionalContext = 'Git workflow skills available. Use /liam-git-workflow-bootstrap to discover all 10 skills as slash commands (type / to browse), or /liam-git-workflow for natural-language routing. All skills: branch, commit, sync, hotfix, release, diagnose, and more.' } }; $o | ConvertTo-Json -Compress\"",
+            "command": "powershell -NoProfile -ExecutionPolicy Bypass -Command \"$o = @{ hookSpecificOutput = @{ hookEventName = 'SessionStart'; additionalContext = 'Git workflow skills available. Use /gw-bootstrap to discover all 10 skills as slash commands (type / to browse), or /gw for natural-language routing. All skills: branch, commit, sync, hotfix, release, diagnose, and more.' } }; $o | ConvertTo-Json -Compress\"",
             "async": false
           }
         ]
