@@ -72,7 +72,20 @@ $liam-git-workflow-remote-diagnose
 
 ### Claude Code 安装
 
-**方式 1: /plugin install (推荐)**
+> **注意**: 插件市场收录正在申请中（等待 PR 合并到 superpowers-marketplace）。收录完成前请使用方式 2（本地路径安装）。
+
+**方式 1: 插件市场安装（推荐）**
+
+通过 Claude Code 插件市场一键安装：
+
+```text
+/plugin marketplace add obra/superpowers-marketplace
+/plugin install liam-git-workflow@superpowers-marketplace
+```
+
+安装后，所有 Git 工作流技能通过 Skill tool 自动可用。
+
+**方式 2: /plugin install 本地路径**
 
 在 Claude Code 会话中运行:
 ```text
@@ -81,7 +94,7 @@ $liam-git-workflow-remote-diagnose
 
 Claude Code 会自动发现 `.claude-plugin/plugin.json`，加载 skills/ 目录中的全部技能，并注册 hooks/ 中的钩子。
 
-**方式 2: 启动参数**
+**方式 3: 启动参数**
 
 ```powershell
 claude --plugin-dir <仓库路径>

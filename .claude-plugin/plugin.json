@@ -3,8 +3,12 @@
   "version": "0.3.0",
   "description": "面向 Codex 和 Claude Code 的个人 Git 工作流插件包 — 分支管理、提交规范、同步策略、远程诊断",
   "author": {
-    "name": "Liam"
+    "name": "Liam",
+    "email": "250707012@cngrgf"
   },
+  "homepage": "https://github.com/bskle/liam-git-workflow",
+  "repository": "https://github.com/bskle/liam-git-workflow",
+  "license": "MIT",
   "keywords": ["git", "workflow", "conventional-commits", "branch-management", "chinese"],
   "skills": ["skills"]
 }
