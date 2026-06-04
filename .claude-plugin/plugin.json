@@ -10,5 +10,5 @@
   "repository": "https://github.com/bskle/liam-git-workflow",
   "license": "MIT",
   "keywords": ["git", "workflow", "conventional-commits", "branch-management", "chinese"],
-  "skills": ["skills"]
+  "skills": "./skills/"
 }

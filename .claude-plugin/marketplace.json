@@ -1,0 +1,20 @@
+{
+  "name": "liam-git-workflow-dev",
+  "description": "Development marketplace for Liam Git Workflow plugin",
+  "owner": {
+    "name": "Liam",
+    "email": "250707012@cngrgf"
+  },
+  "plugins": [
+    {
+      "name": "liam-git-workflow",
+      "description": "面向 Codex 和 Claude Code 的个人 Git 工作流插件包 — 分支管理、提交规范、同步策略、远程诊断",
+      "version": "0.3.0",
+      "source": "./",
+      "author": {
+        "name": "Liam",
+        "email": "250707012@cngrgf"
+      }
+    }
+  ]
+}
