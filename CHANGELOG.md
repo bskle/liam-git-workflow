@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.3.1
+
+- 新增 `.claude-plugin/marketplace.json` — 插件仓库自身作为市场源，支持远程 GitHub 地址安装
+- 修复 `plugin.json` skills 字段格式 (`["skills"]` → `"./skills/"`)
+- 安装方式简化为两行命令: `marketplace add` + `plugin install`
+- 更新方式简化为两行命令: `marketplace update` + `plugin update`
+- 精简 README 从 220 行到 75 行，对标 superpowers 工业标准结构
+- 清理 42 个历史规划中间文件（8122 行）
+
 ## 0.3.0
 
 - 插件化安装: 仓库支持 Claude Code `/plugin install` 标准安装路径
