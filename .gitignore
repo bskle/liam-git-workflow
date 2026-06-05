@@ -8,3 +8,5 @@ __pycache__/
 .tmp_ai_terms2/
 .githooks/
 .claude/
+.planning/
+STATE.md
