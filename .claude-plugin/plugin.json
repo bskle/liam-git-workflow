@@ -1,6 +1,6 @@
 {
   "name": "liam-git-workflow",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "面向 Codex 和 Claude Code 的个人 Git 工作流插件包 — 分支管理、提交规范、同步策略、远程诊断",
   "author": {
     "name": "Liam",
