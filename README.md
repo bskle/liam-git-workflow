@@ -26,7 +26,6 @@
 
 不包含：
 
-- 官方 marketplace 上架流程
 - 自动执行高风险 Git 命令的命令包装器
 - 面向 Cursor、Copilot、Gemini、OpenCode 的适配层
 
@@ -72,35 +71,12 @@ $liam-git-workflow-remote-diagnose
 
 ### Claude Code 安装
 
-> **注意**: 插件市场收录正在申请中（等待 PR 合并到 superpowers-marketplace）。收录完成前请使用方式 2（本地路径安装）。
-
-**方式 1: 插件市场安装（推荐）**
-
-通过 Claude Code 插件市场一键安装：
-
-```text
-/plugin marketplace add obra/superpowers-marketplace
-/plugin install liam-git-workflow@superpowers-marketplace
+```bash
+claude plugin marketplace add bskle/liam-git-workflow
+claude plugin install liam-git-workflow@liam-git-workflow
 ```
 
-安装后，所有 Git 工作流技能通过 Skill tool 自动可用。
-
-**方式 2: /plugin install 本地路径**
-
-在 Claude Code 会话中运行:
-```text
-/plugin install <仓库路径>
-```
-
-Claude Code 会自动发现 `.claude-plugin/plugin.json`，加载 skills/ 目录中的全部技能，并注册 hooks/ 中的钩子。
-
-**方式 3: 启动参数**
-
-```powershell
-claude --plugin-dir <仓库路径>
-```
-
-安装后，skills/ 中的技能通过 Skill tool 自动可用。无需额外配置。
+安装后，所有 Git 工作流技能通过 Skill tool 自动可用。无需 clone 仓库，无需本地路径。
 
 ### Codex 安装
 
@@ -139,22 +115,23 @@ powershell -ExecutionPolicy Bypass -File .\scripts\install.ps1 -CleanLegacy
 
 ## 更新
 
-symlink 安装模式下，更新仓库即更新插件:
+### Claude Code
+
+```bash
+claude plugin marketplace update liam-git-workflow
+claude plugin update liam-git-workflow@liam-git-workflow
+```
+
+版本检测、下载、安装全自动，重启 Claude Code 后生效。
+
+### Codex (symlink 安装)
 
 ```bash
 cd <仓库路径>
 git pull --rebase
 ```
 
-无需重新运行安装脚本 — symlink 直接指向仓库文件，git pull 后立即生效。
-
-如果你需要从 `main` 拉取最新版本后重新执行安装:
-
-```powershell
-powershell -ExecutionPolicy Bypass -File .\scripts\update.ps1 -PullLatest
-```
-
-`-PullLatest` 会在仓库存在本地未提交修改时拒绝执行，避免误覆盖工作区。
+symlink 直接指向仓库文件，git pull 后立即生效。
 
 ## 提交校验
 
@@ -238,7 +215,6 @@ powershell -ExecutionPolicy Bypass -File .\scripts\link_codex_global_skills.ps1
 
 这一版还不包含：
 
-- 官方 marketplace 发布
 - 自动执行危险 Git 动作
 - 远端版本检测和升级提醒
 
