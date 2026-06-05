@@ -98,10 +98,10 @@ if ($CleanLegacy) {
 }
 
 # ── 写入安装元数据 ──
-Write-LiamGitWorkflowInstallMetadata 
-    -RepoRoot $resolvedRoot 
-    -InstalledCodex (-not $SkipCodex) 
-    -InstalledClaude (-not $SkipClaude) 
+Write-LiamGitWorkflowInstallMetadata `
+    -RepoRoot $resolvedRoot `
+    -InstalledCodex (-not $SkipCodex) `
+    -InstalledClaude (-not $SkipClaude) `
     -Version $version
 
 Write-Host ""
