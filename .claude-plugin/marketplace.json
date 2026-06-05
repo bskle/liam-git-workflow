@@ -1,6 +1,6 @@
 {
-  "name": "liam-git-workflow-dev",
-  "description": "Development marketplace for Liam Git Workflow plugin",
+  "name": "liam-git-workflow",
+  "description": "Personal Git workflow plugin for Claude Code and Codex",
   "owner": {
     "name": "Liam",
     "email": "250707012@cngrgf"
@@ -10,11 +10,14 @@
       "name": "liam-git-workflow",
       "description": "面向 Codex 和 Claude Code 的个人 Git 工作流插件包 — 分支管理、提交规范、同步策略、远程诊断",
       "version": "0.3.0",
-      "source": "./",
+      "source": {
+        "source": "url",
+        "url": "https://github.com/bskle/liam-git-workflow.git"
+      },
       "author": {
-        "name": "Liam",
-        "email": "250707012@cngrgf"
-      }
+        "name": "Liam"
+      },
+      "strict": true
     }
   ]
 }
